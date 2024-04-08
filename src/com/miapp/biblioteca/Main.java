@@ -16,6 +16,16 @@ public class Main {
 		// Inicio un Scanner que mire la entrada por consola.
 		Scanner stdIn = new Scanner(System.in);
 		
+		LibroServicio biblioteca= new LibroServicio();
+		biblioteca.crearLibro("Calculo 1", "Spivak", "001", "Educacion");
+		biblioteca.crearLibro("Juegos de Ingenio", "Katzenbach", "002", "Policial");
+		biblioteca.crearLibro("Fundacion", "Aasimov", "003", "Ciencia ficcion");
+		
+		UsuarioServicio usuarios = new UsuarioServicio();
+		usuarios.crearUsuario("Juan Manuel", "Juan5");
+		usuarios.crearUsuario("Martin Fernandez","MFernandez");
+		usuarios.crearUsuario("Pablo Cortez", "C90");
+		
 		
 		/**
 		 * Secuencia de comandos para inventario inicial van aca
@@ -27,7 +37,7 @@ public class Main {
 		 */
 		
 		System.out.println("¡Bienvenido al programa de biblioteca!");
-		while(MenuPrincipal.menuPrincipal(stdIn));	// Loop para la ejecucion constante del codigo.
+		while(MenuPrincipal.menuPrincipal(stdIn, biblioteca, usuarios));	// Loop para la ejecucion constante del codigo.
 		System.out.println("Programa finalizado. ¡Gracias por usar nuestro sistema!");
 		
 		// Cierro el scanner.

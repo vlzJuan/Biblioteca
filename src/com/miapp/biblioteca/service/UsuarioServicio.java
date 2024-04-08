@@ -11,10 +11,13 @@ public class UsuarioServicio {
 	private ArrayList<Usuario> userList;
 	
 	/**
-	 * Constructor con lista de usuarios como parametro.
+	 * Constructores que inicializan la lista de usuarios.
 	 */
 	public UsuarioServicio(ArrayList<Usuario> userList) {
 		this.userList = userList;
+	}
+	public UsuarioServicio() {
+		
 	}
 	
 	public void crearUsuario(String nombre, String id) {

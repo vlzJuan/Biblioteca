@@ -2,6 +2,9 @@ package com.miapp.biblioteca.ui;
 
 import java.util.Scanner;
 
+import com.miapp.biblioteca.service.LibroServicio;
+import com.miapp.biblioteca.service.UsuarioServicio;
+
 public class MenuPrincipal {
 	
 	/**
@@ -16,7 +19,8 @@ public class MenuPrincipal {
 	 * @return		'true'	, cuando quiero que el programa siga corriendo,
 	 * 				'false	, cuando quiero que el programa se detenga.
 	 */
-	public static boolean menuPrincipal(Scanner stdIn) {
+	public static boolean menuPrincipal(Scanner stdIn,LibroServicio biblioteca,
+										UsuarioServicio usuarios) {
 		
 		// Variable de retorno. Solo sera false cuando ingrese la opcion de 'Salir'.
 		boolean continuar = true;
@@ -26,6 +30,7 @@ public class MenuPrincipal {
 		System.out.println("\t2-Devolver un libro.");
 		System.out.println("\t3-Ver catalogo.");
 		System.out.println("\t4-Administrar catalogo.");
+		System.out.println("\t5-Administrar usuarios.");
 		System.out.println("\t0-Salir.");
 		// Mientras no se ingresa una opcion valida, se sigue solicitando.
 		while(!stdIn.hasNextInt()) {
@@ -36,16 +41,24 @@ public class MenuPrincipal {
 		// la opcion ingresada.
 		switch(stdIn.nextInt()) {
 		case 1:	
-			System.out.println("DEBUG. Aca llamo a la funcion de prestamo");
+			// Solicito el prestamo de un libro.
+			MenuSolicitarPrestamo.menuPrestamo(stdIn, biblioteca, usuarios);
 			break;
 		case 2:
+			// Solicito devolver un libro.
 			System.out.println("DEBUG. Aca llamo a la funcion de devolver.");
 			break;
 		case 3:
+			// Hago un menu para ver el catalogo de libros.
 			System.out.println("DEBUG. Aca llamo a la funcion de catalogo.");
 			break;
 		case 4:
+			// Hago un menu para administrar los libros en catalogo.
 			System.out.println("DEBUG. Aca llamo a administrar catalogo.");
+			break;
+		case 5:
+			// Hago un menu para administrar los usuarios
+			System.out.println("DEBUG. Aca llamo a administrar usuarios.");
 			break;
 		case 0:
 			System.out.println("Programa finalizado. ¡Que tenga un buen día!");

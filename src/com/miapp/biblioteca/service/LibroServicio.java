@@ -12,7 +12,7 @@ public class LibroServicio {
 	 * -inventario: 		Lista interna que guarda todos los libros registrados en la 
 	 * 						biblioteca.
 	 */
-	private ArrayList<Libro> inventario; 	// Inventario de biblioteca.	
+	private ArrayList<Libro> inventario;	// Inventario de biblioteca.	
 	
 	/**
 	 * Constructor que inicializa la biblioteca.
@@ -21,6 +21,10 @@ public class LibroServicio {
 	public LibroServicio(ArrayList<Libro> inventario) {
 		this.inventario = inventario;
 	}
+	public LibroServicio() {
+		
+	}
+	
 	
 	/**
 	 * Metodo para crear un nuevo libro y almacenarlo
