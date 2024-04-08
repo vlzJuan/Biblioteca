@@ -9,9 +9,14 @@ public class LibroServicio {
 
 	/**
 	 * Atributos:
-	 * -biblioteca: Parametro interno que guarda los libros en biblioteca.
+	 * -inventario: 		Lista interna que guarda todos los libros registrados en la 
+	 * 						biblioteca.
+	 * -libroSeleccionado: 	Objeto que guarda un libro que se este trabajando en el momento.
+	 * 						Pensarlo como 'Este es el libro que tengo en la mano ahora, y
+	 * 						que voy a prestar/modificar/etc.
 	 */
-	private ArrayList<Libro> inventario; // Inventario de biblioteca.
+	private ArrayList<Libro> inventario; 	// Inventario de biblioteca.
+	private Libro	libroSeleccionado;		
 	
 	/**
 	 * Constructor que inicializa la biblioteca.
@@ -31,26 +36,10 @@ public class LibroServicio {
 	 */
 	public void crearLibro(String titulo, String autor,
 							String ISBN, String genero) {
-	
-		Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
-		this.inventario.add(nuevoLibro);
 		
+		Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
+		this.inventario.add(nuevoLibro);	
 	}
-	
-	public ArrayList<Libro> obtenerInventario(){
-		return inventario;
-	}
-	
-	public void actualizarLibro(String ISBN, String newTitulo, String newAutor, String newGenero) {
-		for(Libro book : this.inventario) {
-			if(book.getISBN().equals(ISBN)) {	
-				book.setTitulo(newTitulo);
-				book.setAutor(newAutor);
-				book.setGenero(newGenero);
-			}
-		}
-	}
-	
 	
 	/**
 	 * Metodo para eliminar un libro del inventario de biblioteca:
@@ -67,29 +56,64 @@ public class LibroServicio {
 			}
 		}	
 	}
+	
+	/**
+	 * Metodo getter para la lista de libros en inventario.
+	 * @return La lista de libros que en inventario.
+	 */
+	public ArrayList<Libro> obtenerInventario(){
+		return inventario;
+	}
+	
+	/**
+	 * Metodo que permite identificar un libro mediante el ISBN y reescribir sus otros
+	 * atributos (excepto disponibilidad).
+	 * @param ISBN
+	 * @param newTitulo
+	 * @param newAutor
+	 * @param newGenero
+	 */
+	public void actualizarLibro(String ISBN, String newTitulo, String newAutor, String newGenero) {
+		for(Libro book : this.inventario) {
+			if(book.getISBN().equals(ISBN)) {	
+				book.setTitulo(newTitulo);
+				book.setAutor(newAutor);
+				book.setGenero(newGenero);
+			}
+		}
+	}
+	
 
 	/**
-	 * Metodo para retornar si un libro esta registrado en el inventario.
-	 * NOTA: No devuelve si esta 'disponible', solo si existe.
-	 * @param ISBN	, el codigo ISBN del libro que se busca.
-	 * @return 		'true' si el libro esta en el inventario,
-	 * 				'false' si el libro no esta en el inventario
+	 * Metodo que permite 'levantar' un libro a la variable interna de esta biblioteca
+	 * para realizar operaciones con el mismo.
+	 * @param ISBN
+	 * @return 		un objeto tipo Libro que apunta al libro en inventario 
+	 * 				sobre el que se quiere trabajar, si este esta en el inventario,
+	 * 				o 'null' si el libro no esta en la lista.
 	 */
-	public boolean estaRegistrado(String ISBN) {
+	public boolean seleccionarLibro(String ISBN) {
 		
-		boolean estaRegistrado = false;
+		boolean libroAgarrado = false;
 		
 		for(Libro book:inventario) {
 			if(book.getISBN().equals(ISBN)) {
-				estaRegistrado = true;
-				break;
+				this.libroSeleccionado=book;
+				libroAgarrado=true;
 			}
 		}
 		
-		return estaRegistrado;
-		
+		return libroAgarrado;
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
