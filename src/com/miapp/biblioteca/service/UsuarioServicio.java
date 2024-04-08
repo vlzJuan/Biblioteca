@@ -8,26 +8,26 @@ import com.miapp.biblioteca.Usuario;
 
 public class UsuarioServicio {
 
-	private ArrayList<Usuario> usuarios;
+	private ArrayList<Usuario> userList;
 	
 	/**
 	 * Constructor con lista de usuarios como parametro.
 	 */
-	public UsuarioServicio(ArrayList<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public UsuarioServicio(ArrayList<Usuario> userList) {
+		this.userList = userList;
 	}
 	
 	public void crearUsuario(String nombre, String id) {
 		
 		Usuario nuevoUsuario = new Usuario(nombre,id);
-		usuarios.add(nuevoUsuario);
+		userList.add(nuevoUsuario);
 	}
 	
 	/**
 	 * Getter para la lista de usuarios:
 	 */
 	public ArrayList<Usuario> getListaUsuarios(){
-		return usuarios;
+		return userList;
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class UsuarioServicio {
 	 */
 	public void updateUsuario(String id, String nuevoNombre) {
 		
-		for(Usuario user: usuarios) {
+		for(Usuario user: userList) {
 			if(user.getId().equals(id)) {
 				user.setNombre(nuevoNombre);
 				break;
@@ -48,17 +48,29 @@ public class UsuarioServicio {
 	 */
 	public void eliminarUsuario(String id) {
 		
-		Iterator <Usuario> it = usuarios.iterator();
+		Iterator <Usuario> it = userList.iterator();
 		
 		while(it.hasNext()) {
 			if(it.next().getId().equals(id)) {
 				it.remove();
 			}
 		}
-		
-		
 	}
 	
+	
+	public boolean usuarioExiste(String userId) {
+		
+		boolean registrado = false;
+		for(Usuario user:userList) {
+			if(user.getId().equals(userId)) {
+				registrado = true;
+				break;
+			}
+		}
+		
+		return registrado;
+		
+	}
 	
 	
 }

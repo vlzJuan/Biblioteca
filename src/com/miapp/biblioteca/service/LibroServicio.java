@@ -11,12 +11,8 @@ public class LibroServicio {
 	 * Atributos:
 	 * -inventario: 		Lista interna que guarda todos los libros registrados en la 
 	 * 						biblioteca.
-	 * -libroSeleccionado: 	Objeto que guarda un libro que se este trabajando en el momento.
-	 * 						Pensarlo como 'Este es el libro que tengo en la mano ahora, y
-	 * 						que voy a prestar/modificar/etc.
 	 */
-	private ArrayList<Libro> inventario; 	// Inventario de biblioteca.
-	private Libro	libroSeleccionado;		
+	private ArrayList<Libro> inventario; 	// Inventario de biblioteca.	
 	
 	/**
 	 * Constructor que inicializa la biblioteca.
@@ -85,26 +81,23 @@ public class LibroServicio {
 	
 
 	/**
-	 * Metodo que permite 'levantar' un libro a la variable interna de esta biblioteca
-	 * para realizar operaciones con el mismo.
-	 * @param ISBN
-	 * @return 		un objeto tipo Libro que apunta al libro en inventario 
-	 * 				sobre el que se quiere trabajar, si este esta en el inventario,
-	 * 				o 'null' si el libro no esta en la lista.
+	 * Metodo que determina si el libro que se solicita esta disponible dentro del
+	 * inventario de libros de la biblioteca.
+	 * @param 	ISBN	, el codigo ISBN del libro solicitado.
+	 * @return	'true' , si el libro esta en inventario Y esta disponible.
+	 * 			'false', otherwise.
 	 */
-	public boolean seleccionarLibro(String ISBN) {
+	public boolean libroDisponible(String ISBN) {
 		
-		boolean libroAgarrado = false;
+		boolean disponible = false;
 		
 		for(Libro book:inventario) {
 			if(book.getISBN().equals(ISBN)) {
-				this.libroSeleccionado=book;
-				libroAgarrado=true;
+				disponible=book.getDisponible();
+				break;
 			}
 		}
-		
-		return libroAgarrado;
-		
+		return disponible;
 	}
 	
 	
@@ -113,8 +106,7 @@ public class LibroServicio {
 	
 	
 	
-	
-	
+
 	
 	
 	/**
@@ -140,6 +132,12 @@ public class LibroServicio {
 		
 		return hayDisponibles;
 	}
+	
+	
+	
+
+	
+	
 	
 
 	

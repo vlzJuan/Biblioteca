@@ -14,22 +14,28 @@ public class MenuSolicitarPrestamo {
 		System.out.println("Ingrese el codigo ISBN del libro a solicitar:");
 		String libroISBN = stdIn.nextLine();
 		
-		if(biblioteca.seleccionarLibro(libroISBN)==true) {
+		if(biblioteca.libroDisponible(libroISBN)) {
+		
+			System.out.println("Ingrese el identificador de usuario.");
+			String userId = stdIn.nextLine();
 			
-			// ACA IMPLEMENTAR SOLICITUD DE USUARIO PARA PRESTAMO.
+			if(usuarios.usuarioExiste(userId)) {
+				
+				
+				// ACA GESTIONAR PRESTAMO DEL LIBRO.
+				
+				
+			}
+			else {
+				System.out.println("El identificador de usuario no coincide con un usuario "
+						+ "registrado en el sistema.");
+			}
 			
 		}
 		else {
-			System.out.println("El libro solicitado no esta registrado en la biblioteca.");
+			System.out.println("El libro solicitado no esta disponible.");
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
