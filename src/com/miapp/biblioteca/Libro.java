@@ -76,10 +76,10 @@ public class Libro {
 	// formato que quiero mostrarlo.
 	@Override
 	public String toString() {
-		return "Libro:\tTitulo = " + this.titulo + "\n\t\t"
-				+ "Autor = " + this.autor + "\n\t\t"
-				+ "ISBN = " + this.ISBN + "\n\t\t"
-				+ "Genero = " + this.genero + "\n\t\t"
-				+ "Disponible = " + this.disponible;
+		return "Libro: [ Titulo = " + this.titulo + " , "
+				+ "Autor = " + this.autor + " , "
+				+ "ISBN = " + this.ISBN + " , "
+				+ "Genero = " + this.genero + " , "
+				+ "Disponible = " + this.disponible + " ]";
 	}
 }

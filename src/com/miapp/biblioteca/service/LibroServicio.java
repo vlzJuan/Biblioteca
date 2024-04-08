@@ -23,7 +23,7 @@ public class LibroServicio {
 		this.inventario = inventario;
 	}
 	public LibroServicio() {
-		
+	
 	}
 	
 	
@@ -39,7 +39,7 @@ public class LibroServicio {
 							String ISBN, String genero) {
 		
 		Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
-		this.inventario.add(nuevoLibro);	
+		inventario.add(nuevoLibro);	
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class LibroServicio {
 	 * @param newGenero
 	 */
 	public void actualizarLibro(String ISBN, String newTitulo, String newAutor, String newGenero) {
-		for(Libro book : this.inventario) {
+		for(Libro book : inventario) {
 			if(book.getISBN().equals(ISBN)) {	
 				book.setTitulo(newTitulo);
 				book.setAutor(newAutor);
@@ -93,7 +93,7 @@ public class LibroServicio {
 	public Libro getLibro(String libroISBN) {
 
 		Libro currentLibro = null;
-		for(Libro book:this.inventario) {
+		for(Libro book:inventario) {
 			if(book.getISBN().equals(libroISBN)) {
 				currentLibro=book;
 				break;
@@ -133,11 +133,12 @@ public class LibroServicio {
 		boolean operacionRealizada = false;
 		
 		if(book.getDisponible()==false && user!=null) {
-			
-			book.setDisponible(true);
-			usuarios.devuelveLibro(user, book);
-			operacionRealizada = true;
-			
+			// Si el usuario tiene el libro,
+			if(user.getLibrosPrestados().contains(book)) {
+				book.setDisponible(true);
+				usuarios.devuelveLibro(user, book);
+				operacionRealizada = true;
+			}
 		}
 		
 		return operacionRealizada;

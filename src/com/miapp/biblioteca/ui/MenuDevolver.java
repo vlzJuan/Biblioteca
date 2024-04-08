@@ -15,7 +15,7 @@ public class MenuDevolver {
 	public static void devolverLibro(Scanner stdIn, LibroServicio biblioteca,
 										UsuarioServicio usuarios) {
 		
-		System.out.println("Ingresar el libro que se quiere devolver.");
+		System.out.println("Ingresar el ISBN del libro que se quiere devolver.");
 		String libroISBN = stdIn.nextLine();
 		Libro currentLibro = biblioteca.getLibro(libroISBN);
 		

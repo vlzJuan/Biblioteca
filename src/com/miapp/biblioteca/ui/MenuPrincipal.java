@@ -28,9 +28,10 @@ public class MenuPrincipal {
 		System.out.println("Ingrese el numero de la operacion que quiere realizar:");
 		System.out.println("\t1-Solicitar prestamo de libro.");
 		System.out.println("\t2-Devolver un libro.");
-		System.out.println("\t3-Ver catalogo.");
-		System.out.println("\t4-Administrar catalogo.");
-		System.out.println("\t5-Administrar usuarios.");
+		System.out.println("\t3-Ver libros que un usuario tiene.");
+		//System.out.println("\t3-Ver catalogo.");
+		//System.out.println("\t4-Administrar catalogo.");
+		//System.out.println("\t5-Administrar usuarios.");
 		System.out.println("\t0-Salir.");
 		// Mientras no se ingresa una opcion valida, se sigue solicitando.
 		while(!stdIn.hasNextInt()) {
@@ -39,7 +40,11 @@ public class MenuPrincipal {
 		}
 		// Cuando se puede interpretar la entrada como int, la guardo como
 		// la opcion ingresada.
-		switch(stdIn.nextInt()) {
+		
+		int opcion = stdIn.nextInt();
+		stdIn.nextLine(); // Limpio el \n
+		
+		switch(opcion) {
 		case 1:	
 			// Solicito el prestamo de un libro.
 			MenuPedir.pedirLibro(stdIn, biblioteca, usuarios);
@@ -49,8 +54,8 @@ public class MenuPrincipal {
 			MenuDevolver.devolverLibro(stdIn, biblioteca, usuarios);
 			break;
 		case 3:
-			// Hago un menu para ver el catalogo de libros.
-			System.out.println("DEBUG. Aca llamo a la funcion de catalogo.");
+			// Aca muestro que libros tiene un usuario.
+			MenuMostrarPrestados.mostrarPrestados(stdIn,usuarios);
 			break;
 		case 4:
 			// Hago un menu para administrar los libros en catalogo.

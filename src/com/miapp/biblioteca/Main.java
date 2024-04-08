@@ -4,6 +4,7 @@ package com.miapp.biblioteca;
 import com.miapp.biblioteca.service.LibroServicio;
 import com.miapp.biblioteca.service.UsuarioServicio;
 
+import java.util.ArrayList;
 //Importo la herramienta Scanner para leer entrada por consola.
 import java.util.Scanner;
 
@@ -16,12 +17,12 @@ public class Main {
 		// Inicio un Scanner que mire la entrada por consola.
 		Scanner stdIn = new Scanner(System.in);
 		
-		LibroServicio biblioteca= new LibroServicio();
+		LibroServicio biblioteca= new LibroServicio(new ArrayList<Libro>());
 		biblioteca.agregarLibro("Calculo 1", "Spivak", "001", "Educacion");
 		biblioteca.agregarLibro("Juegos de Ingenio", "Katzenbach", "002", "Policial");
 		biblioteca.agregarLibro("Fundacion", "Aasimov", "003", "Ciencia ficcion");
 		
-		UsuarioServicio usuarios = new UsuarioServicio();
+		UsuarioServicio usuarios = new UsuarioServicio(new ArrayList<Usuario>());
 		usuarios.crearUsuario("Juan Manuel", "Juan5");
 		usuarios.crearUsuario("Martin Fernandez","MFernandez");
 		usuarios.crearUsuario("Pablo Cortez", "C90");
