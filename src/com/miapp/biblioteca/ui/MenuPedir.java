@@ -35,7 +35,7 @@ public class MenuPedir {
 			}
 		}
 		else {
-			System.out.println("El libro solicitado no esta disponible.");
+			System.out.println("El libro solicitado no esta disponible. Volviendo a menu.");
 		}
 		
 	}

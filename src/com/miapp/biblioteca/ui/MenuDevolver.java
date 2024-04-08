@@ -15,29 +15,27 @@ public class MenuDevolver {
 	public static void devolverLibro(Scanner stdIn, LibroServicio biblioteca,
 										UsuarioServicio usuarios) {
 		
-		System.out.println("Ingresar id de usuario");
-		String userId = stdIn.nextLine();
-		Usuario currentUser = usuarios.getUser(userId);
+		System.out.println("Ingresar el libro que se quiere devolver.");
+		String libroISBN = stdIn.nextLine();
+		Libro currentLibro = biblioteca.getLibro(libroISBN);
 		
-		// Si el usuario esta en la lista de usuarios
-		if(currentUser!=null) {
+		if(currentLibro!=null) {
 			
-			System.out.println("Ingrese el codigo ISBN del libro que desea devolver:");
+			System.out.println("Ingrese el Id del usuario que lo tiene.");
 			
-			String libroISBN = stdIn.nextLine();
-			Libro currentLibro = biblioteca.getLibro(libroISBN);
+			String userId = stdIn.nextLine();
+			Usuario currentUser = usuarios.getUser(userId);
 			
-			if(currentLibro!=null) {
-				// ACA GESTIONAR ENTREGA DE LIBRO
+			if(biblioteca.aceptarDevolucionLibro(currentLibro,usuarios, currentUser)) {
+				System.out.println("Devolucion realizada con exito.");
 			}
 			else {
 				System.out.println("El usuario no poseia el libro a devolver.");
 			}
 			
-			
 		}
 		else {
-			System.out.println("El usuario solicitado no existe. Volviendo a menu.");
+			System.out.println("El libro a devolver no existe. Volviendo a menu.");
 		}
 		
 		
