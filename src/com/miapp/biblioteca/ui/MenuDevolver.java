@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.miapp.biblioteca.service.LibroServicio;
 import com.miapp.biblioteca.service.UsuarioServicio;
 
-public class MenuDevolverLibro {
+public class MenuDevolver {
 
 	
 	public static void devolverLibro(Scanner stdIn, LibroServicio biblioteca,
@@ -27,6 +27,8 @@ public class MenuDevolverLibro {
 			else {
 				System.out.println("El usuario no poseia el libro a devolver.");
 			}
+			
+			
 		}
 		else {
 			System.out.println("El usuario solicitado no existe. Volviendo a menu.");

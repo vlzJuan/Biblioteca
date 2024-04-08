@@ -42,11 +42,11 @@ public class MenuPrincipal {
 		switch(stdIn.nextInt()) {
 		case 1:	
 			// Solicito el prestamo de un libro.
-			MenuSolicitarPrestamo.menuPrestamo(stdIn, biblioteca, usuarios);
+			MenuPedir.pedirLibro(stdIn, biblioteca, usuarios);
 			break;
 		case 2:
 			// Solicito devolver un libro.
-			System.out.println("DEBUG. Aca llamo a la funcion de devolver.");
+			MenuDevolver.devolverLibro(stdIn, biblioteca, usuarios);
 			break;
 		case 3:
 			// Hago un menu para ver el catalogo de libros.

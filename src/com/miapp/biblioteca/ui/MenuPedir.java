@@ -4,10 +4,10 @@ import java.util.Scanner;
 import com.miapp.biblioteca.service.*;
 
 
-public class MenuSolicitarPrestamo {
+public class MenuPedir {
 	
 	// Menu principal de solicitar un prestamo de libro.
-	public static void menuPrestamo(Scanner stdIn, LibroServicio biblioteca, 
+	public static void pedirLibro(Scanner stdIn, LibroServicio biblioteca, 
 									UsuarioServicio usuarios) {
 		
 		System.out.println("Ingrese el codigo ISBN del libro a solicitar:");
