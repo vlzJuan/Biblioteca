@@ -61,7 +61,12 @@ public class UsuarioServicio {
 		}
 	}
 	
-	
+	/**
+	 * Metodo que permite identificar si un usuario esta registrado.
+	 * @param userId	, el identificador de usuario.
+	 * @return 'true'	, si el usuario se encuentra registrado.
+	 * @return 'false'	, si el usuario no se encuentra registrado.
+	 */
 	public boolean usuarioExiste(String userId) {
 		
 		boolean registrado = false;
@@ -71,13 +76,11 @@ public class UsuarioServicio {
 				break;
 			}
 		}
-		
 		return registrado;
-		
 	}
 	
 	/**
-	 * Metodo que indica si un usuario tiene un libro en posesion.
+	 * Metodo que devuelve un libro en posesion del usuario.
 	 * @param userId	, identificador del usuario.
 	 * @param libroISBN	, ISBN del libro a devolver.
 	 * @return 'true'	, si el usuario existe y el libro existe en su lista de libros
