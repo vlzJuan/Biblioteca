@@ -1,8 +1,13 @@
 package com.miapp.biblioteca;
 
+//Importo los servicios necesarios para 'manejar' mi biblioteca.
+import com.miapp.biblioteca.service.LibroServicio;
+import com.miapp.biblioteca.service.UsuarioServicio;
+
+//Importo la herramienta Scanner para leer entrada por consola.
 import java.util.Scanner;
 
-import com.miapp.biblioteca.ui.Menu;
+import com.miapp.biblioteca.ui.MenuPrincipal;
 
 public class Main {
 
@@ -10,19 +15,22 @@ public class Main {
 		
 		// Inicio un Scanner que mire la entrada por consola.
 		Scanner stdIn = new Scanner(System.in);
+		
+		
+		/**
+		 * Secuencia de comandos para inventario inicial van aca
+		 */
+	
 
-		/* Aca hacer el codigo para inicializar el inventario y los usuarios iniciales.
-		*
-		**
-		**
-		*/
+		/**
+		 * Secuencia de comandos para lista de usuarios inicial va aca.
+		 */
 		
 		System.out.println("¡Bienvenido al programa de biblioteca!");
-		
-		while(Menu.menuPrincipal(stdIn));	// Loop para la ejecucion constante del codigo.
-		
+		while(MenuPrincipal.menuPrincipal(stdIn));	// Loop para la ejecucion constante del codigo.
 		System.out.println("Programa finalizado. ¡Gracias por usar nuestro sistema!");
 		
+		// Cierro el scanner.
 		stdIn.close();
 
 

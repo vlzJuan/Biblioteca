@@ -2,7 +2,7 @@ package com.miapp.biblioteca.ui;
 
 import java.util.Scanner;
 
-public class Menu {
+public class MenuPrincipal {
 	
 	/**
 	 * menuPrincipal();
