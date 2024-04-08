@@ -77,6 +77,12 @@ public class UsuarioServicio {
 		}
 		return currentUser;
 	}
+	public void recibeLibro(Usuario user, Libro book) {
+		
+		user.addLibro(book);
+		
+		
+	}
 	
 	
 	

@@ -56,4 +56,30 @@ public class Usuario{
 
 	}
 	
+	/**
+	 * Metodos para interactuar con la lista de libros:
+	 * Retornan true si se pudo realizar la accion solicitada.
+	 */
+	public boolean addLibro(Libro book) {
+		boolean agregado = false;
+		
+		if(!this.librosPrestados.contains(book)) {
+			this.librosPrestados.add(book);
+			agregado = true;
+		}
+		return agregado;
+	}
+	public boolean removeLibro(Libro book) {
+		
+		boolean removido = false;
+		
+		if(this.librosPrestados.contains(book)) {
+			this.librosPrestados.remove(book);
+			removido = true;
+		}
+		
+		return removido;
+	}
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Usuario;
 
 public class LibroServicio {
 
@@ -84,26 +85,38 @@ public class LibroServicio {
 	}
 	
 
+	/** getLibro(String libroISBN)
+	 * Metodo que retorna el objeto libro que se busca, si esta en inventario.
+	 * @param libroISBN	, el identificador ISBN del libro.
+	 * @return	'null' si el libro no se encontro, o el objeto libro si se lo encontro.
+	 */
 	public Libro getLibro(String libroISBN) {
 
 		Libro currentLibro = null;
-		
 		for(Libro book:this.inventario) {
 			if(book.getISBN().equals(libroISBN)) {
 				currentLibro=book;
 				break;
 			}
 		}
-		
 		return currentLibro;
 	}
 	
 
-
+	public boolean prestarLibro(Libro book, UsuarioServicio usuarios , Usuario user) {
+		
+		boolean operacionRealizada = false;
+		
+		if(book.getDisponible()==true) {
+			book.setDisponible(false);
+			usuarios.recibeLibro(user, book);
+			operacionRealizada = true;
+			
+		}
+		
+		return operacionRealizada;
+	}
 	
-	
-	
-
 	
 		
 }
