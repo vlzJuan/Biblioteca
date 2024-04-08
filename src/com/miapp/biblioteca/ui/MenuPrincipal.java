@@ -29,7 +29,7 @@ public class MenuPrincipal {
 		System.out.println("\t1-Solicitar prestamo de libro.");
 		System.out.println("\t2-Devolver un libro.");
 		System.out.println("\t3-Ver libros que un usuario tiene.");
-		//System.out.println("\t3-Ver catalogo.");
+		System.out.println("\t4-Ver catalogo.");
 		//System.out.println("\t4-Administrar catalogo.");
 		//System.out.println("\t5-Administrar usuarios.");
 		System.out.println("\t0-Salir.");
@@ -58,15 +58,14 @@ public class MenuPrincipal {
 			MenuMostrarPrestados.mostrarPrestados(stdIn,usuarios);
 			break;
 		case 4:
-			// Hago un menu para administrar los libros en catalogo.
-			System.out.println("DEBUG. Aca llamo a administrar catalogo.");
+			// Muestro los libros en el catalogo
+			biblioteca.mostrarInventario();
 			break;
 		case 5:
 			// Hago un menu para administrar los usuarios
 			System.out.println("DEBUG. Aca llamo a administrar usuarios.");
 			break;
 		case 0:
-			System.out.println("Programa finalizado. ¡Que tenga un buen día!");
 			continuar=false;
 			break;
 		default:	
@@ -78,17 +77,6 @@ public class MenuPrincipal {
 		return continuar;
 		
 	}
-	
-	public static void prestarLibro() {
-		// ToDo
-	}
-	public static void devolverLibro() {
-		
-	}
-	
-	
-	
-	
 	
 	
 

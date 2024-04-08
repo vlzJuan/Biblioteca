@@ -144,7 +144,16 @@ public class LibroServicio {
 		return operacionRealizada;
 	}
 	
-	
+	/**
+	 * Metodo utilizado para mostrar los libros disponibles en sistema.
+	 */
+	public void mostrarInventario() {
+		System.out.println("\nLos libros registrados en la biblioteca son:");
+		for(Libro book:inventario) {
+			System.out.println(book.toString());
+		}
+		System.out.println("");
+	}
 	
 	
 	
