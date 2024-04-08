@@ -15,7 +15,7 @@ public class LibroServicio {
 	private ArrayList<Libro> inventario;	// Inventario de biblioteca.	
 	
 	/**
-	 * Constructor que inicializa la biblioteca.
+	 * Constructores que inicializan la biblioteca.
 	 * @param biblioteca , una lista de Libro-s que inicia el inventario inicial.
 	 */
 	public LibroServicio(ArrayList<Libro> inventario) {
@@ -104,7 +104,21 @@ public class LibroServicio {
 		return disponible;
 	}
 	
-	
+	/**
+	 * Metodo para devolver un libro por ISBN.
+	 * 
+	 * 
+	 */
+	public void devolverLibro(String libroISBN) {
+		
+		for(Libro book:inventario) {
+			if(book.getISBN().equals(libroISBN)) {
+				book.setDisponible(true);
+			}
+		}
+		
+		
+	}
 	
 	
 	

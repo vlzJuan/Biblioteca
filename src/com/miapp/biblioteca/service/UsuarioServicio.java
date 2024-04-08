@@ -3,6 +3,7 @@ package com.miapp.biblioteca.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.miapp.biblioteca.Libro;
 import com.miapp.biblioteca.Usuario;
 
 
@@ -74,6 +75,44 @@ public class UsuarioServicio {
 		return registrado;
 		
 	}
+	
+	/**
+	 * Metodo que indica si un usuario tiene un libro en posesion.
+	 * @param userId	, identificador del usuario.
+	 * @param libroISBN	, ISBN del libro a devolver.
+	 * @return 'true'	, si el usuario existe y el libro existe en su lista de libros
+	 * 					que tiene prestados.
+	 * @return 'false'	, si el libro no esta en la lista de libros prestados al usuario.
+	 */
+	public boolean usuarioDevuelveLibro(LibroServicio biblioteca, 
+									String userId, String libroISBN) {
+		
+		boolean devolvioLibro=false;
+		
+		for(Usuario user:userList) {
+			// Verifica si el usuario existe. If so, entra al if.
+			if(user.getId().equals(userId)) {
+				// Verifica que el usuario tenga ese libro. Si lo tiene, lo devuelve.
+				
+				Iterator <Libro> it = user.getLibrosPrestados().iterator();
+				
+				while(it.hasNext()) {
+					if(it.next().getISBN().equals(libroISBN)) {
+						
+						biblioteca.devolverLibro(libroISBN);
+						it.remove();
+						devolvioLibro = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		return devolvioLibro;
+		
+	}
+	
+	
 	
 	
 }
