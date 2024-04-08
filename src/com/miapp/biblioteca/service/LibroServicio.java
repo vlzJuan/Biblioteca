@@ -102,12 +102,19 @@ public class LibroServicio {
 		return currentLibro;
 	}
 	
-
+	/**
+	 * Metodo usado para prestar un libro a un usuario. Es boolean porque permite identificar
+	 * si el libro esta disponible y y el usuario es correcto.
+	 * @param book
+	 * @param usuarios
+	 * @param user
+	 * @return
+	 */
 	public boolean prestarLibro(Libro book, UsuarioServicio usuarios , Usuario user) {
 		
 		boolean operacionRealizada = false;
 		
-		if(book.getDisponible()==true) {
+		if(book.getDisponible()==true && user!=null) {
 			book.setDisponible(false);
 			usuarios.recibeLibro(user, book);
 			operacionRealizada = true;
@@ -116,6 +123,28 @@ public class LibroServicio {
 		
 		return operacionRealizada;
 	}
+	
+	/**
+	 * 
+	 */
+	public boolean aceptarDevolucionLibro(Libro book, UsuarioServicio usuarios,
+											Usuario user) {
+		
+		boolean operacionRealizada = false;
+		
+		if(book.getDisponible()==false && user!=null) {
+			
+			book.setDisponible(true);
+			usuarios.devuelveLibro(user, book);
+			operacionRealizada = true;
+			
+		}
+		
+		return operacionRealizada;
+	}
+	
+	
+	
 	
 	
 		

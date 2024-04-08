@@ -26,12 +26,12 @@ public class MenuPedir {
 			
 			Usuario currentUser = usuarios.getUser(userId);
 			
-			if(currentUser!=null) {
-				// ACA GESTIONAR PRESTAMO DEL LIBRO.
+			// Invoco el metodo que presta libros.
+			if(biblioteca.prestarLibro(currentLibro, usuarios, currentUser)) {
+				System.out.println("Libro prestado exitosamente.");
 			}
 			else {
-				System.out.println("El identificador de usuario no coincide con un usuario "
-						+ "registrado en el sistema.");
+				System.out.println("No se pudo prestar el libro al usuario solicitado.");
 			}
 		}
 		else {

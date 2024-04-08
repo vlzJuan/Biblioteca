@@ -77,11 +77,22 @@ public class UsuarioServicio {
 		}
 		return currentUser;
 	}
+	
+	/**
+	 * Metodo que le agrega a un usuario un libro, en su lista de libros en posesion.
+	 * NO VERIFICA que el libro este prestado. De eso se encarga la biblioteca.
+	 * @param user
+	 * @param book
+	 */
 	public void recibeLibro(Usuario user, Libro book) {
-		
 		user.addLibro(book);
-		
-		
+	}
+	/**
+	 * Metodo que remueve el libro de un usuario, si lo tiene en su posesion.
+	 * NO VERIFICA que el libro este entre sus prestados. De eso se encarga la biblioteca.
+	 */
+	public void devuelveLibro(Usuario user, Libro book) {
+		user.removeLibro(book);
 	}
 	
 	
