@@ -26,7 +26,7 @@ public class Menu {
 		System.out.println("\t2-Devolver un libro.");
 		System.out.println("\t3-Ver catalogo.");
 		System.out.println("\t4-Administrar catalogo.");
-		System.out.println("\t5-Salir.");
+		System.out.println("\t0-Salir.");
 		// Mientras no se ingresa una opcion valida, se sigue solicitando.
 		while(!stdIn.hasNextInt()) {
 			System.out.println("Error: Debe ingresar un entero correspondiente"
@@ -47,7 +47,7 @@ public class Menu {
 		case 4:
 			System.out.println("DEBUG. Aca llamo a administrar catalogo.");
 			break;
-		case 5:
+		case 0:
 			System.out.println("Programa finalizado. ¡Que tenga un buen día!");
 			continuar=false;
 			break;
