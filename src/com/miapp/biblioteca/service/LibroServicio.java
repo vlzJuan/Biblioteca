@@ -11,14 +11,14 @@ public class LibroServicio {
 	 * Atributos:
 	 * -biblioteca: Parametro interno que guarda los libros en biblioteca.
 	 */
-	private ArrayList<Libro> biblioteca; // Inventario de biblioteca.
+	private ArrayList<Libro> inventario; // Inventario de biblioteca.
 	
 	/**
 	 * Constructor que inicializa la biblioteca.
 	 * @param biblioteca , una lista de Libro-s que inicia el inventario inicial.
 	 */
-	public LibroServicio(ArrayList<Libro> biblioteca) {
-		this.biblioteca = biblioteca;
+	public LibroServicio(ArrayList<Libro> inventario) {
+		this.inventario = inventario;
 	}
 	
 	/**
@@ -33,16 +33,16 @@ public class LibroServicio {
 							String ISBN, String genero) {
 	
 		Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
-		this.biblioteca.add(nuevoLibro);
+		this.inventario.add(nuevoLibro);
 		
 	}
 	
 	public ArrayList<Libro> obtenerInventario(){
-		return biblioteca;
+		return inventario;
 	}
 	
 	public void actualizarLibro(String ISBN, String newTitulo, String newAutor, String newGenero) {
-		for(Libro book : this.biblioteca) {
+		for(Libro book : this.inventario) {
 			if(book.getISBN().equals(ISBN)) {	
 				book.setTitulo(newTitulo);
 				book.setAutor(newAutor);
@@ -57,7 +57,7 @@ public class LibroServicio {
 	 */
 	public void eliminarLibro(String ISBN) {
 		
-		Iterator<Libro> it = biblioteca.iterator();
+		Iterator<Libro> it = inventario.iterator();
 		
 		// Recorro la biblioteca hasta hallar el libro del ISBN,
 		// y lo elimino si lo encuentro.
@@ -65,26 +65,59 @@ public class LibroServicio {
 			if(it.next().getISBN().equals(ISBN)) {	// Si encontre el libro con ese ISBN,
 				it.remove();						// lo elimino de la lista de libros.
 			}
+		}	
+	}
+
+	/**
+	 * Metodo para retornar si un libro esta registrado en el inventario.
+	 * NOTA: No devuelve si esta 'disponible', solo si existe.
+	 * @param ISBN	, el codigo ISBN del libro que se busca.
+	 * @return 		'true' si el libro esta en el inventario,
+	 * 				'false' si el libro no esta en el inventario
+	 */
+	public boolean estaRegistrado(String ISBN) {
+		
+		boolean estaRegistrado = false;
+		
+		for(Libro book:inventario) {
+			if(book.getISBN().equals(ISBN)) {
+				estaRegistrado = true;
+				break;
+			}
 		}
+		
+		return estaRegistrado;
 		
 		
 	}
 	
 	
-	/* Comento todo esto porque seguro va en el package de UI.
-	public void mostrarInventario() {
-		// Si la biblioteca no esta vacia,
-		if(!this.biblioteca.isEmpty()) {
-			System.out.println("Los libros disponibles son:");
-			for(Libro book:this.biblioteca) {
-				System.out.println(book.toString());
+	
+	/**
+	 * Metodo que itera sobre el inventario de libros y determina si hay
+	 * libros disponibles para prestar.
+	 * @return	'true' si hay libros disponibles,
+	 * 			'false' otherwise.
+	 */
+	public boolean hayLibrosDisponibles() {
+		
+		// Variable de retorno. Inicia asumiendo que no hay libros disponibles.
+		boolean hayDisponibles = false;
+		
+		// Para cada libro en el inventario, veo si hay alguno disponible.
+		// Si al menos uno cumple, devuelvo que hay disponibles. El break es por
+		// eficiencia, para no seguir iterando tras saber que hay libros para prestar.
+		for(Libro book:inventario) {
+			if(book.getDisponible()==true) {
+				hayDisponibles = true;
+				break;
 			}
 		}
-		else {
-			System.out.println("La biblioteca esta vacia. No hay libros disponibles.");
-		}
+		
+		return hayDisponibles;
+	}
+	
 
-	}*/
 	
 		
 }

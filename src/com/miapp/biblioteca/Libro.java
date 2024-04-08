@@ -50,7 +50,7 @@ public class Libro {
 	public String getGenero() {
 		return genero;
 	}
-	public boolean isAvailable() {
+	public boolean getDisponible() {
 		return disponible;
 	}
 	
@@ -68,7 +68,7 @@ public class Libro {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	public void setAvailable(boolean disponible) {
+	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
 	
