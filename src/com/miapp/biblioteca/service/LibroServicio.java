@@ -34,7 +34,7 @@ public class LibroServicio {
 	 * @param ISBN	, el codigo ISBN del libro
 	 * @param genero, el genero de literatura del libro.
 	 */
-	public void crearLibro(String titulo, String autor,
+	public void agregarLibro(String titulo, String autor,
 							String ISBN, String genero) {
 		
 		Libro nuevoLibro = new Libro(titulo, autor, ISBN, genero);
@@ -61,7 +61,7 @@ public class LibroServicio {
 	 * Metodo getter para la lista de libros en inventario.
 	 * @return La lista de libros que en inventario.
 	 */
-	public ArrayList<Libro> obtenerInventario(){
+	public ArrayList<Libro> getInventario(){
 		return inventario;
 	}
 	
@@ -84,75 +84,21 @@ public class LibroServicio {
 	}
 	
 
-	/**
-	 * Metodo que determina si el libro que se solicita esta disponible dentro del
-	 * inventario de libros de la biblioteca.
-	 * @param 	ISBN	, el codigo ISBN del libro solicitado.
-	 * @return	'true' , si el libro esta en inventario Y esta disponible.
-	 * 			'false', otherwise.
-	 */
-	public boolean libroDisponible(String ISBN) {
+	public Libro getLibro(String libroISBN) {
+
+		Libro currentLibro = null;
 		
-		boolean disponible = false;
-		
-		for(Libro book:inventario) {
-			if(book.getISBN().equals(ISBN)) {
-				disponible=book.getDisponible();
+		for(Libro book:this.inventario) {
+			if(book.getISBN().equals(libroISBN)) {
+				currentLibro=book;
 				break;
 			}
 		}
-		return disponible;
+		
+		return currentLibro;
 	}
-	
-	/**
-	 * Metodo para devolver un libro por ISBN.
-	 * 
-	 * 
-	 */
-	public void devolverLibro(String libroISBN) {
-		
-		for(Libro book:inventario) {
-			if(book.getISBN().equals(libroISBN)) {
-				book.setDisponible(true);
-			}
-		}
-		
-		
-	}
-	
-	
-	
-	
 	
 
-	
-	
-	/**
-	 * Metodo que itera sobre el inventario de libros y determina si hay
-	 * libros disponibles para prestar.
-	 * @return	'true' si hay libros disponibles,
-	 * 			'false' otherwise.
-	 */
-	public boolean hayLibrosDisponibles() {
-		
-		// Variable de retorno. Inicia asumiendo que no hay libros disponibles.
-		boolean hayDisponibles = false;
-		
-		// Para cada libro en el inventario, veo si hay alguno disponible.
-		// Si al menos uno cumple, devuelvo que hay disponibles. El break es por
-		// eficiencia, para no seguir iterando tras saber que hay libros para prestar.
-		for(Libro book:inventario) {
-			if(book.getDisponible()==true) {
-				hayDisponibles = true;
-				break;
-			}
-		}
-		
-		return hayDisponibles;
-	}
-	
-	
-	
 
 	
 	

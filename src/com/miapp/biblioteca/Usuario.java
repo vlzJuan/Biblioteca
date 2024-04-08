@@ -47,7 +47,6 @@ public class Usuario{
 		this.id = id;
 	}
 	
-	
 	// Sobreescribo el toString por defecto, para mostrar el usuario en el
 	// formato que quiero mostrarlo.
 	@Override

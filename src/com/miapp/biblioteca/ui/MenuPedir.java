@@ -1,6 +1,9 @@
 package com.miapp.biblioteca.ui;
 
 import java.util.Scanner;
+
+import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Usuario;
 import com.miapp.biblioteca.service.*;
 
 
@@ -13,12 +16,17 @@ public class MenuPedir {
 		System.out.println("Ingrese el codigo ISBN del libro a solicitar:");
 		String libroISBN = stdIn.nextLine();
 		
-		if(biblioteca.libroDisponible(libroISBN)) {
+		Libro currentLibro = biblioteca.getLibro(libroISBN);
+		
+		
+		if(currentLibro!=null) {
 		
 			System.out.println("Ingrese el identificador de usuario.");
 			String userId = stdIn.nextLine();
 			
-			if(usuarios.usuarioExiste(userId)) {
+			Usuario currentUser = usuarios.getUser(userId);
+			
+			if(currentUser!=null) {
 				// ACA GESTIONAR PRESTAMO DEL LIBRO.
 			}
 			else {

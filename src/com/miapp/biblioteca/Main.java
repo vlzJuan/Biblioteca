@@ -17,9 +17,9 @@ public class Main {
 		Scanner stdIn = new Scanner(System.in);
 		
 		LibroServicio biblioteca= new LibroServicio();
-		biblioteca.crearLibro("Calculo 1", "Spivak", "001", "Educacion");
-		biblioteca.crearLibro("Juegos de Ingenio", "Katzenbach", "002", "Policial");
-		biblioteca.crearLibro("Fundacion", "Aasimov", "003", "Ciencia ficcion");
+		biblioteca.agregarLibro("Calculo 1", "Spivak", "001", "Educacion");
+		biblioteca.agregarLibro("Juegos de Ingenio", "Katzenbach", "002", "Policial");
+		biblioteca.agregarLibro("Fundacion", "Aasimov", "003", "Ciencia ficcion");
 		
 		UsuarioServicio usuarios = new UsuarioServicio();
 		usuarios.crearUsuario("Juan Manuel", "Juan5");
