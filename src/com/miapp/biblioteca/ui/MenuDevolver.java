@@ -26,7 +26,7 @@ public class MenuDevolver {
 			String userId = stdIn.nextLine();
 			Usuario currentUser = usuarios.getUser(userId);
 			
-			if(biblioteca.aceptarDevolucionLibro(currentLibro,usuarios, currentUser)) {
+			if(biblioteca.aceptarDevolucionLibro(currentLibro, currentUser)) {
 				System.out.println("Devolucion realizada con exito.");
 			}
 			else {

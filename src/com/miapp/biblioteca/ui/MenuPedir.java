@@ -27,7 +27,7 @@ public class MenuPedir {
 			Usuario currentUser = usuarios.getUser(userId);
 			
 			// Invoco el metodo que presta libros.
-			if(biblioteca.prestarLibro(currentLibro, usuarios, currentUser)) {
+			if(biblioteca.prestarLibro(currentLibro, currentUser)) {
 				System.out.println("Libro prestado exitosamente.");
 			}
 			else {

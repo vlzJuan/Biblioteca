@@ -84,14 +84,14 @@ public class UsuarioServicio {
 	 * @param user
 	 * @param book
 	 */
-	public void recibeLibro(Usuario user, Libro book) {
+	public static void recibeLibro(Usuario user, Libro book) {
 		user.addLibro(book);
 	}
 	/**
 	 * Metodo que remueve el libro de un usuario, si lo tiene en su posesion.
 	 * NO VERIFICA que el libro este entre sus prestados. De eso se encarga la biblioteca.
 	 */
-	public void devuelveLibro(Usuario user, Libro book) {
+	public static void devuelveLibro(Usuario user, Libro book) {
 		user.removeLibro(book);
 	}
 	

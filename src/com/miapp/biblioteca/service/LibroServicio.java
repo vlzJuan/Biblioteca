@@ -110,13 +110,13 @@ public class LibroServicio {
 	 * @param user
 	 * @return
 	 */
-	public boolean prestarLibro(Libro book, UsuarioServicio usuarios , Usuario user) {
+	public boolean prestarLibro(Libro book , Usuario user) {
 		
 		boolean operacionRealizada = false;
 		
 		if(book.getDisponible()==true && user!=null) {
 			book.setDisponible(false);
-			usuarios.recibeLibro(user, book);
+			UsuarioServicio.recibeLibro(user, book);
 			operacionRealizada = true;
 			
 		}
@@ -127,7 +127,7 @@ public class LibroServicio {
 	/**
 	 * 
 	 */
-	public boolean aceptarDevolucionLibro(Libro book, UsuarioServicio usuarios,
+	public boolean aceptarDevolucionLibro(Libro book,
 											Usuario user) {
 		
 		boolean operacionRealizada = false;
@@ -136,7 +136,7 @@ public class LibroServicio {
 			// Si el usuario tiene el libro,
 			if(user.getLibrosPrestados().contains(book)) {
 				book.setDisponible(true);
-				usuarios.devuelveLibro(user, book);
+				UsuarioServicio.devuelveLibro(user, book);
 				operacionRealizada = true;
 			}
 		}
