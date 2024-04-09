@@ -28,15 +28,17 @@ public class MenuPrincipal {
 		System.out.println("Ingrese el numero de la operacion que quiere realizar:");
 		System.out.println("\t1-Solicitar prestamo de libro.");
 		System.out.println("\t2-Devolver un libro.");
-		System.out.println("\t3-Ver libros que un usuario tiene.");
-		System.out.println("\t4-Ver catalogo.");
+		System.out.println("\t3-Buscar un libro.");
+		System.out.println("\t4-Administrar catalogo");
+		System.out.println("\t5-Administrar usuarios");
+		//System.out.println("\t3-Ver libros que un usuario tiene.");
+		//System.out.println("\t4-Ver catalogo.");
 		//System.out.println("\t4-Administrar catalogo.");
 		//System.out.println("\t5-Administrar usuarios.");
 		System.out.println("\t0-Salir.");
 		// Mientras no se ingresa una opcion valida, se sigue solicitando.
 		while(!stdIn.hasNextInt()) {
-			System.out.println("Error: Debe ingresar un entero correspondiente"
-					+ "a una de las opciones.");
+			System.out.println("Ingrese el numero de la opcion que desea usar.");
 		}
 		// Cuando se puede interpretar la entrada como int, la guardo como
 		// la opcion ingresada.
@@ -54,12 +56,15 @@ public class MenuPrincipal {
 			MenuDevolver.devolverLibro(stdIn, biblioteca, usuarios);
 			break;
 		case 3:
-			// Aca muestro que libros tiene un usuario.
-			MenuMostrarPrestados.mostrarPrestados(stdIn,usuarios);
+			// Aca hacer lo necesario para buscar libros.
+			// TODO
+			//MenuMostrarPrestados.mostrarPrestados(stdIn,usuarios);
 			break;
 		case 4:
-			// Muestro los libros en el catalogo
-			biblioteca.mostrarInventario();
+			// Aca, accedo al menu para administrar el inventario.
+			// Esta dentro de un while para que se ejecute HASTA que, dentro de ese
+			// menu, se elija salir del administrador de catalogo.
+			while(MenuAdministrarCatalogo.menuCatalogo(stdIn, biblioteca));
 			break;
 		case 5:
 			// Hago un menu para administrar los usuarios
