@@ -2,6 +2,8 @@ package com.miapp.biblioteca.ui;
 
 import java.util.Scanner;
 
+import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Usuario;
 import com.miapp.biblioteca.service.LibroServicio;
 import com.miapp.biblioteca.service.UsuarioServicio;
 
@@ -49,11 +51,11 @@ public class MenuPrincipal {
 		switch(opcion) {
 		case 1:	
 			// Solicito el prestamo de un libro.
-			MenuPedir.pedirLibro(stdIn, biblioteca, usuarios);
+			pedirLibro(stdIn, biblioteca, usuarios);
 			break;
 		case 2:
 			// Solicito devolver un libro.
-			MenuDevolver.devolverLibro(stdIn, biblioteca, usuarios);
+			devolverLibro(stdIn, biblioteca, usuarios);
 			break;
 		case 3:
 			// Aca hacer lo necesario para buscar libros.
@@ -83,6 +85,74 @@ public class MenuPrincipal {
 		
 		return continuar;
 		
+	}
+	
+	/**
+	 * Metodo privado que administra lo necesario para que un usuario pida un libro.
+	 * @param stdIn
+	 * @param biblioteca
+	 * @param usuarios
+	 */
+	private static void pedirLibro(Scanner stdIn, LibroServicio biblioteca, 
+									UsuarioServicio usuarios) {
+		
+		System.out.println("Ingrese el codigo ISBN del libro a solicitar:");
+		String libroISBN = stdIn.nextLine();
+		
+		Libro currentLibro = biblioteca.getLibro(libroISBN);
+		
+		
+		if(currentLibro!=null) {
+		
+			System.out.println("Ingrese el identificador de usuario.");
+			String userId = stdIn.nextLine();
+			
+			Usuario currentUser = usuarios.getUser(userId);
+			
+			// Invoco el metodo que presta libros.
+			if(biblioteca.prestarLibro(currentLibro, currentUser)) {
+				System.out.println("Libro prestado exitosamente.");
+			}
+			else {
+				System.out.println("No se pudo prestar el libro al usuario solicitado.");
+			}
+		}
+		else {
+			System.out.println("El libro solicitado no esta disponible. Volviendo a menu.");
+		}
+	}
+	
+	
+	/**
+	 * Metodo privado que administra lo necesario para que un usuario devuelva un libro.
+	 * @param stdIn
+	 * @param biblioteca
+	 * @param usuarios
+	 */
+	private static void devolverLibro(Scanner stdIn, LibroServicio biblioteca,
+			UsuarioServicio usuarios) {
+
+		System.out.println("Ingresar el ISBN del libro que se quiere devolver.");
+		String libroISBN = stdIn.nextLine();
+		Libro currentLibro = biblioteca.getLibro(libroISBN);
+
+		if(currentLibro!=null) {
+
+			System.out.println("Ingrese el Id del usuario que lo tiene.");
+
+			String userId = stdIn.nextLine();
+			Usuario currentUser = usuarios.getUser(userId);
+
+			if(biblioteca.aceptarDevolucionLibro(currentLibro, currentUser)) {
+				System.out.println("Devolucion realizada con exito.");
+			}
+			else {
+				System.out.println("El usuario no poseia el libro a devolver.");
+			}
+		}
+		else {
+			System.out.println("El libro a devolver no existe. Volviendo a menu.");
+		}
 	}
 	
 	
