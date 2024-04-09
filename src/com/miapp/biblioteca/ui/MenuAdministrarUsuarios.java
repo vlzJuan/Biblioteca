@@ -116,16 +116,28 @@ public class MenuAdministrarUsuarios {
 		Usuario currentUser = usuarios.getUser(oldId);
 		// TODO: CHEQUEO DE SI HAY QUE CAMBIAR EL ID, AL IGUAL QUE CON LOS LIBROS.
 		// Si el usuario existe entre los registrados, se hace esto.
+		
 		if(currentUser!=null) {
 			
-			System.out.println("El nombre actual del usuario es: " + currentUser.getNombre());
-			System.out.print("Ingrese el nombre que quiere darle al usuario ");
-			System.out.println("(ingrese una cadena vacia para no modificar):");
-			String userNombre = stdIn.nextLine();
+			System.out.print("Ingrese el nuevo identificador del usuario a utilizar ");
+			System.out.println("(Ingrese una cadena vacia para no modificar)");
+			String nuevoId = stdIn.nextLine();
 			
-			if(!userNombre.equals("")) {
-				usuarios.updateUsuario(oldId, oldId, userNombre);
-				System.out.println("El nombre del usuario ha sido cambiado.");
+			if(nuevoId.equals("")) {
+				nuevoId = oldId;
+			}
+			
+			// Si no hay un usuario con nuevoId, OR, ese usuario que hay es el mismo...
+			if(usuarios.getUser(nuevoId)==null || nuevoId.equals(oldId)) {
+				
+				System.out.println("El nombre actual del usuario es: " + currentUser.getNombre());
+				System.out.print("Ingrese el nombre que quiere darle al usuario ");
+				System.out.println("(ingrese una cadena vacia para no modificar):");
+				String userNombre = stdIn.nextLine();
+				
+				usuarios.updateUsuario(oldId, nuevoId, userNombre);
+			
+				System.out.println("El usuario ha sido modificado.");
 			}
 		}
 		else {
