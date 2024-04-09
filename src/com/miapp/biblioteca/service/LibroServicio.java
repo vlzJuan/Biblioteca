@@ -93,24 +93,23 @@ public class LibroServicio {
 	 * @return 'false'	, si el libro estaba prestado.
 	 * 
 	 */
-	public boolean actualizarLibro(String ISBN, String nuevoISBN, String nuevoTitulo, 
+	public boolean actualizarLibro(String oldISBN, String nuevoISBN, String nuevoTitulo, 
 								String nuevoAutor, String nuevoGenero) {
 		
 		boolean operacionRealizada = false;
 		
 		for(Libro book : inventario) {
 			// Si encontre el libro con el ISBN inicial, entro aca y empiezo a analizar.
-			if(book.getISBN().equals(ISBN)) {	
+			if(book.getISBN().equals(oldISBN)) {	
 				// Si el libro estaba disponible, lo puedo modificar.
 				if(book.getDisponible()==true) {
-					
 					// Para cada parametro, 
 					// lo modifico si no le pase una cadena vacia como nuevo parametro.
 					
 					if(!nuevoISBN.equals("")) 
 						book.setISBN(nuevoISBN);
 					
-					if(!nuevoTitulo.equals(nuevoTitulo))
+					if(!nuevoTitulo.equals(""))
 						book.setTitulo(nuevoTitulo);
 					
 					if(!nuevoAutor.equals(""))
@@ -125,6 +124,7 @@ public class LibroServicio {
 				}
 			}
 		}
+		
 		
 		return operacionRealizada;
 		
