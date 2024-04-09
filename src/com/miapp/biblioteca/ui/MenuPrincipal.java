@@ -30,7 +30,7 @@ public class MenuPrincipal {
 		System.out.println("Ingrese el numero de la operacion que quiere realizar:");
 		System.out.println("\t1-Solicitar prestamo de libro.");
 		System.out.println("\t2-Devolver un libro.");
-		System.out.println("\t3-Buscar un libro. \\ Actual: Muestra catalogo.");
+		System.out.println("\t3-Buscar un libro.");
 		System.out.println("\t4-Administrar catalogo");
 		System.out.println("\t5-Administrar usuarios");
 		//System.out.println("\t3-Ver libros que un usuario tiene.");
@@ -59,10 +59,7 @@ public class MenuPrincipal {
 			break;
 		case 3:
 			// Aca hacer lo necesario para buscar libros.
-			//PROVISIONAL: Lo uso para mostrar el inventario, a fin de ver si
-			// administrar catalogo funciona correctamente.
-			// TODO
-			biblioteca.mostrarInventario();
+			MenuBuscarLibro.menuBuscar(stdIn, biblioteca);
 			break;
 		case 4:
 			// Aca, accedo al menu para administrar el inventario.

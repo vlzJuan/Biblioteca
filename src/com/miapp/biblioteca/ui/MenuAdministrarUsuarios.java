@@ -15,7 +15,7 @@ public class MenuAdministrarUsuarios {
 		// Solo se hace false si ingreso la opcion de salir de este menu (0).
 		boolean continuar = true;
 		
-		System.out.println("\n[Menu: Administracion de usuarios.}");
+		System.out.println("\n[Menu: Administracion de usuarios.]");
 		System.out.println("Elija una opcion:");
 		System.out.println("1 - Agregar usuario al sistema.");
 		System.out.println("2 - Modificar usuario en sistema.");
