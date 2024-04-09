@@ -3,7 +3,7 @@ package com.miapp.biblioteca.ui;
 import java.util.Scanner;
 
 import com.miapp.biblioteca.Usuario;
-import com.miapp.biblioteca.service.LibroServicio;
+
 import com.miapp.biblioteca.service.UsuarioServicio;
 
 public class MenuAdministrarUsuarios {
@@ -51,14 +51,13 @@ public class MenuAdministrarUsuarios {
 			break;
 		case 4:
 			// Aca se muestra un solo usuario
-			// TODO
-			
+			mostrarUsuario(stdIn, usuarios);
 			break;
 			
 		case 5:
 			// Aca se muestran todos los usuarios.
-			// TODO
-			
+			mostrarAllUsuarios(usuarios);
+			break;
 		case 0:
 			System.out.println("Saliendo del menu de administrador de usuarios.\n");
 			continuar = false;
@@ -147,9 +146,56 @@ public class MenuAdministrarUsuarios {
 		
 		System.out.println("Regresando al menu de administración de usuarios...");
 		
+	}
+	
+	/**
+	 * Metodo que imprime el usuario y sus libros prestados.
+	 * @param stdIn		, Scanner heredado de main que apunta a System.in
+	 * @param usuarios	, el objeto que guarda todos los usuarios registrados.
+	 */
+	private static void mostrarUsuario(Scanner stdIn, UsuarioServicio usuarios) {
+		
+		System.out.println("Ingrese el identificador del usuario que quiere mostrarse:");
+		String userId = stdIn.nextLine();
+		Usuario currentUser = usuarios.getUser(userId);
+		
+		if(currentUser!=null) {
+			
+			System.out.println(currentUser.toString());
+			usuarios.mostrarLibrosPrestados(currentUser);
+	
+		}
+		else {
+			System.out.println("No se ha encontrado el usuario solicitado.");
+		}
+		
+	}
+	
+	/**
+	 * Metodo que imprime por consola todos los usuarios registrados, junto a sus libros
+	 * prestados (si los tienen)
+	 * @param usuarios	, el objeto donde se guardan todos los usuarios registrados.
+	 */
+	private static void mostrarAllUsuarios(UsuarioServicio usuarios) {
+		
+		// Si la lista de usuarios no esta vacia,
+		if(!usuarios.getListaUsuarios().isEmpty()) {
+			
+			System.out.println("A continuación se muestran todos los usuarios registrados "
+					+ "en el sistema:");
+			for(Usuario user:usuarios.getListaUsuarios()) {
+				
+				System.out.println(user.toString());
+				usuarios.mostrarLibrosPrestados(user);
+			}
+		}
+		else {
+			System.out.println("No hay usuarios registrados en el sistema.");
+		}
 		
 		
 	}
+	
 	
 	
 	

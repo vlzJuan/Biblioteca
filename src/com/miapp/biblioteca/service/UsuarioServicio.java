@@ -130,5 +130,23 @@ public class UsuarioServicio {
 		}
 	}
 	
+	/**
+	 * Metodo que imprime por consola los libros prestados a un usuario.
+	 * @param user	, el usuario cuyos libros se quiere ver.
+	 */
+	public void mostrarLibrosPrestados(Usuario user) {
+		
+		if(!user.getLibrosPrestados().isEmpty()) {
+			System.out.println("El usuario " + user.getId() + " no tiene libros prestados.");
+		}
+		else {
+			System.out.println("El usuario " + user.getId() + " tiene los siguientes libros:");
+			for(Libro book:user.getLibrosPrestados()) {
+				System.out.println(book.toString());
+			}
+		}
+		
+	}
+	
 	
 }
