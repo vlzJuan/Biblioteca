@@ -137,7 +137,44 @@ public class MenuAdministrarCatalogo {
 			break;
 		case 3: 
 			// Eliminar un libro del catalogo.
-			// TODO
+			
+			System.out.println("Ingrese el codigo ISBN del libro a eliminar:");
+			String ISBN = stdIn.nextLine();
+			
+			Libro eliminable = biblioteca.getLibro(ISBN);
+			
+			// Si el libro esta en la biblioteca, se procede
+			if(eliminable!=null) {
+				// Verifico si esta prestado o no.
+				if(eliminable.getDisponible()) {
+					// Si esta disponible, lo puedo borrar.
+					System.out.println("El libro a borrar sera:");
+					System.out.println(eliminable.toString());
+					System.out.print("¿Está seguro de que quiere borrarlo? ");					
+					System.out.print("(Escriba \"SI\"para confirmar, ");
+					System.out.println("o cualquier otra cosa para cancelar la operación).");
+
+					// Hay que escribir "SI", case insensitive, para borrar. Por seguridad de
+					// no borrar cosas por accidente.
+					if(stdIn.nextLine().equalsIgnoreCase("SI")) {
+						biblioteca.eliminarLibro(ISBN);
+						System.out.println("El libro ha sido eliminado con exito.");
+					}
+					else {
+						System.out.println("Operacion cancelada. El libro no fue eliminado.");
+					}
+				}
+				else {
+					// Si no esta esta disponible, no lo puedo borrar.
+					System.out.println("El libro actualmente lo tiene un usuario. No "
+							+ "se lo puede borrar hasta que sea devuelto.");
+				}
+			}
+			else {
+				// Si llegue aca, el libro no estaba en la biblioteca.
+				System.out.println("El libro solicitado no esta en esta biblioteca.");
+			}
+			
 			break;
 		case 4:
 			// Aca se muestra el inventario actual.
