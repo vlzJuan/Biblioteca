@@ -1,14 +1,14 @@
-package com.miapp.biblioteca;
+package com.miapp.biblioteca.ui;
 
 //Importo los servicios necesarios para 'manejar' mi biblioteca.
+import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Usuario;
 import com.miapp.biblioteca.service.LibroServicio;
 import com.miapp.biblioteca.service.UsuarioServicio;
 
 import java.util.ArrayList;
 //Importo la herramienta Scanner para leer entrada por consola.
 import java.util.Scanner;
-
-import com.miapp.biblioteca.ui.MenuPrincipal;
 
 public class Main {
 
@@ -44,8 +44,6 @@ public class Main {
 		// Cierro el scanner.
 		stdIn.close();
 
-
-		
 	}
 
 }
