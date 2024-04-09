@@ -68,20 +68,66 @@ public class LibroServicio {
 	
 	/**
 	 * Metodo que permite identificar un libro mediante el ISBN y reescribir sus otros
-	 * atributos (excepto disponibilidad).
-	 * @param ISBN
-	 * @param newTitulo
-	 * @param newAutor
-	 * @param newGenero
+	 * atributos (excepto disponibilidad). 
+	 * 
+	 * Si un parametro es "", ese parametro no sera modificado por esta funcion. 
+	 * 
+	 * La verificacion de que modificar un libro no sobreescriba otro por accidente se hace
+	 * antes de invocar a esta funcion.
+	 * 
+	 * Si el libro esta prestado, no podra modificarse el libro.
+	 * 
+	 * // NOTA: Desde el punto de vista de programacion, se podria. Pero si yo tengo el libro
+	 * // 'Fisica 1' prestado, modificarlo a 'Matematica 3' en el inventario no cambia el
+	 * // libro que yo tengo en mis manos. Y no podria devolverlo. Por eso, hago esta
+	 * // consideracion para evitar modificar libros prestados.
+	 * 
+	 * @param ISBN			, el ISBN del libro a modificar.
+	 * @param nuevoISBN		, el nuevo ISBN del libro que se esta modificando	
+	 * @param nuevoTitulo	, el nuevo titulo del libro que se esta modificando
+	 * @param nuevoAutor	, el nuevo autor del libro que se esta modificando
+	 * @param nuevoGenero	, el nuevo genero del libro que se esta modificando.
+	 * 
+	 * @return 'true'	, si se pudo modificar el libro solicitado (incluso aunque todos los
+	 * 					parametros nuevos hayan sido "").
+	 * @return 'false'	, si el libro estaba prestado.
+	 * 
 	 */
-	public void actualizarLibro(String ISBN, String newTitulo, String newAutor, String newGenero) {
+	public boolean actualizarLibro(String ISBN, String nuevoISBN, String nuevoTitulo, 
+								String nuevoAutor, String nuevoGenero) {
+		
+		boolean operacionRealizada = false;
+		
 		for(Libro book : inventario) {
+			// Si encontre el libro con el ISBN inicial, entro aca y empiezo a analizar.
 			if(book.getISBN().equals(ISBN)) {	
-				book.setTitulo(newTitulo);
-				book.setAutor(newAutor);
-				book.setGenero(newGenero);
+				// Si el libro estaba disponible, lo puedo modificar.
+				if(book.getDisponible()==true) {
+					
+					// Para cada parametro, 
+					// lo modifico si no le pase una cadena vacia como nuevo parametro.
+					
+					if(!nuevoISBN.equals("")) 
+						book.setISBN(nuevoISBN);
+					
+					if(!nuevoTitulo.equals(nuevoTitulo))
+						book.setTitulo(nuevoTitulo);
+					
+					if(!nuevoAutor.equals(""))
+						book.setAutor(nuevoAutor);
+					
+					if(!nuevoGenero.equals(""))
+						book.setGenero(nuevoGenero);
+					
+					// Cuando terminé con esta asignacion, afirmo que realice la operacion
+					// y devuelvo true con la funcion.
+					operacionRealizada = true;
+				}
 			}
 		}
+		
+		return operacionRealizada;
+		
 	}
 	
 
