@@ -70,7 +70,7 @@ public class MenuPrincipal {
 			break;
 		case 5:
 			// Hago un menu para administrar los usuarios
-			System.out.println("DEBUG. Aca llamo a administrar usuarios.");
+			while(MenuAdministrarUsuarios.menuUsuarios(stdIn, usuarios));
 			break;
 		case 0:
 			continuar=false;

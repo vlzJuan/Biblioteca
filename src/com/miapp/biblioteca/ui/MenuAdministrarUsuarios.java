@@ -41,7 +41,7 @@ public class MenuAdministrarUsuarios {
 
 		case 2:
 			// Menu para modificar usuario del sistema.
-			// TODO
+			modificarUsuario(stdIn, usuarios);
 			
 			break;
 		case 3: 
@@ -51,11 +51,13 @@ public class MenuAdministrarUsuarios {
 			break;
 		case 4:
 			// Aca se muestra un solo usuario
+			// TODO
 			
 			break;
 			
 		case 5:
 			// Aca se muestran todos los usuarios.
+			// TODO
 			
 		case 0:
 			System.out.println("Saliendo del menu de administrador de usuarios.\n");
@@ -73,8 +75,8 @@ public class MenuAdministrarUsuarios {
 	
 	/**
 	 * Metodo interno que administra el menu de ingresar un usuario al sistema.
-	 * @param stdIn
-	 * @param usuarios
+	 * @param stdIn		, un Scanner heredado del main que apunta a System.in
+	 * @param usuarios	, la instancia de UsuarioServicio que contiene los users registrados.
 	 */
 	private static void agregarUsuario(Scanner stdIn, UsuarioServicio usuarios) {
 		
@@ -97,10 +99,45 @@ public class MenuAdministrarUsuarios {
 			System.out.print("Ya existe un usuario con ese identificador. ");
 			System.out.println("Operación abortada.");
 		}
+		System.out.println("Regresando al menu de administración de usuarios...");
 	}
 	
-	
-	
+	/**
+	 * Metodo que administra el menu de modificar un usuario.
+	 * // TODO: FALTA CHEQUEAR SI QUIERO CAMBIAR EL ID
+	 * @param stdIn		, un Scanner heredado del main que apunta a System.in
+	 * @param usuarios	, la instancia de UsuarioServicio que contiene los users registrados.
+	 */
+	private static void modificarUsuario(Scanner stdIn, UsuarioServicio usuarios) {
+		
+		System.out.println("Ingrese el identificador del usuario a modificar:");
+		String oldId = stdIn.nextLine();
+		
+		Usuario currentUser = usuarios.getUser(oldId);
+		// TODO: CHEQUEO DE SI HAY QUE CAMBIAR EL ID, AL IGUAL QUE CON LOS LIBROS.
+		// Si el usuario existe entre los registrados, se hace esto.
+		if(currentUser!=null) {
+			
+			System.out.println("El nombre actual del usuario es: " + currentUser.getNombre());
+			System.out.print("Ingrese el nombre que quiere darle al usuario ");
+			System.out.println("(ingrese una cadena vacia para no modificar):");
+			String userNombre = stdIn.nextLine();
+			
+			if(!userNombre.equals("")) {
+				usuarios.updateUsuario(oldId, oldId, userNombre);
+				System.out.println("El nombre del usuario ha sido cambiado.");
+			}
+		}
+		else {
+			// Si estoy aca, es porque el usuario no existia.
+			System.out.println("El usuario a modificar no existe en el sistema.");
+		}
+		
+		System.out.println("Regresando al menu de administración de usuarios...");
+		
+		
+		
+	}
 	
 	
 	

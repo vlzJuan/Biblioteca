@@ -37,12 +37,19 @@ public class UsuarioServicio {
 	
 	/**
 	 * Setter para actualizar un usuario, basado en su id:
+	 * TODO : DOCUMENTAR ESTO MEJOR.
 	 */
-	public void updateUsuario(String id, String nuevoNombre) {
+	public void updateUsuario(String oldId, String nuevoId, String nuevoNombre) {
 		
 		for(Usuario user: userList) {
-			if(user.getId().equals(id)) {
-				user.setNombre(nuevoNombre);
+			if(user.getId().equals(oldId)) {
+				
+				if(!nuevoId.equals(""))
+					user.setId(nuevoId);
+				
+				if(!nuevoNombre.equals(""))
+					user.setNombre(nuevoNombre);
+				
 				break;
 			}
 		}
