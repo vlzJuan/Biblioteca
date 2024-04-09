@@ -46,7 +46,7 @@ public class MenuAdministrarUsuarios {
 			break;
 		case 3: 
 			// Menu para eliminar un usuario del catalogo
-			// TODO
+			eliminarUsuario(stdIn, usuarios);
 						
 			break;
 		case 4:
@@ -148,6 +148,56 @@ public class MenuAdministrarUsuarios {
 		
 	}
 	
+	
+	
+	
+	private static void eliminarUsuario(Scanner stdIn, UsuarioServicio usuarios) {
+		
+		System.out.println("Ingrese el ID del usuario que desea eliminar:");
+		String userId = stdIn.nextLine();
+		
+		Usuario eliminable = usuarios.getUser(userId);
+		
+		if(eliminable!=null) {
+			
+			// Si el eliminable no tiene libros prestados... 
+			if(eliminable.getLibrosPrestados().isEmpty()) {
+				
+				System.out.println("Va a eliminar al siguiente usuario:");
+				System.out.println(eliminable.toString());
+				System.out.print("¿Desea eliminar al usuario? ");
+				System.out.print("(Ingrese \"SI\" para realizar la operación, ");
+				System.out.println("o cualquier otra cadena para no hacerlo): ");
+				
+				// Hay que escribir "SI", case insensitive, para borrar. Por seguridad de
+				// no borrar cosas por accidente.
+				if(stdIn.nextLine().equalsIgnoreCase("SI")) {
+					usuarios.eliminarUsuario(userId);
+					System.out.println("El usuario ha sido eliminado con exito.");
+				}
+				else {
+					System.out.println("Operacion cancelada. El usuario no fue eliminado.");
+				}
+			}
+			else {
+				// Si estoy aca, ese usuario tiene libros que devolver.
+				System.out.println("El usuario tiene libros para devolver. NO puede ser "
+						+ "eliminado hasta que los devuelva.");
+			}
+			
+		}
+		else {
+			System.out.println("El usuario no se encuentra registrado, ergo, no se lo puede "
+					+ "eliminar.");
+		}
+		
+	
+		
+		
+		
+	}
+	
+	
 	/**
 	 * Metodo que imprime el usuario y sus libros prestados.
 	 * @param stdIn		, Scanner heredado de main que apunta a System.in
@@ -192,8 +242,6 @@ public class MenuAdministrarUsuarios {
 		else {
 			System.out.println("No hay usuarios registrados en el sistema.");
 		}
-		
-		
 	}
 	
 	
