@@ -14,7 +14,7 @@ public class MenuAdministrarCatalogo {
 		// Solo se hace false si ingreso la opcion de salir de este menu (0).
 		boolean continuar = true;
 		
-		System.out.println("Administracion del catalogo.");
+		System.out.println("\n[Menu: Administracion del catalogo.}");
 		System.out.println("Elija una opcion:");
 		System.out.println("1 - Agregar libro al catalogo");
 		System.out.println("2 - Modificar libro en catalogo");

@@ -24,7 +24,7 @@ public class MenuPrincipal {
 		
 		// Variable de retorno. Solo sera false cuando ingrese la opcion de 'Salir'.
 		boolean continuar = true;
-		
+		System.out.println("\n[Menu Principal]");
 		System.out.println("Ingrese el numero de la operacion que quiere realizar:");
 		System.out.println("\t1-Solicitar prestamo de libro.");
 		System.out.println("\t2-Devolver un libro.");
