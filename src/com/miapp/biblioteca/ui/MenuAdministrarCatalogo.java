@@ -74,11 +74,15 @@ public class MenuAdministrarCatalogo {
 			// Si puede identificar un libro con ese ISBN, puede modificarlo.
 			if(modificable!=null) {
 				
-				System.out.println("Ingrese el nuevo ISBN a asignarle:");
-				System.out.println("(Dejar en blanco para no modificar.)");
+				System.out.print("Ingrese el nuevo ISBN a asignarle ");
+				System.out.println("(Dejar en blanco para no modificar):");
 				System.out.println("(Si el ISBN es repetido con otro libro en inventario, "
-						+ "la operación será cancelada");
+						+ "la operación será cancelada)");
 				String nuevoISBN = stdIn.nextLine();
+				
+				if(nuevoISBN.equals("")) {
+					nuevoISBN = libroISBN;
+				}
 				
 				// En este IF, verifico que no haya OTRO libro en inventario 
 				// con el nuevo ISBN.
@@ -91,20 +95,22 @@ public class MenuAdministrarCatalogo {
 				//  (Pisa un libro, pero es el mismo que quiero modificar)], hago esto.
 				if(biblioteca.getLibro(nuevoISBN)==null || 
 						nuevoISBN.equals(libroISBN)) {
-					System.out.println("Ingrese el nuevo título a asignarle:");
-					System.out.println("(Dejar en blanco para no modificar.)");
+					
+					System.out.println("Ingrese el nuevo título a asignarle ");
+					System.out.println("(Dejar en blanco para no modificar):");
 					String nuevoTitulo = stdIn.nextLine();
-					System.out.println("Ingrese el nuevo autor a asignarle:");
-					System.out.println("(Dejar en blanco para no modificar.)");
+					System.out.println("Ingrese el nuevo autor a asignarle ");
+					System.out.println("(Dejar en blanco para no modificar):");
 					String nuevoAutor = stdIn.nextLine();
-					System.out.println("Ingrese el nuevo genero a asignarle:");
-					System.out.println("(Dejar en blanco para no modificar.)");
+					System.out.println("Ingrese el nuevo genero a asignarle ");
+					System.out.println("(Dejar en blanco para no modificar):");
 					String nuevoGenero = stdIn.nextLine();
 					
 					
 					if(biblioteca.actualizarLibro(	libroISBN, nuevoISBN, nuevoTitulo, 
 													nuevoAutor, nuevoGenero)) {
-						
+						System.out.println("La operacion de modificar un libro fue "
+								+ "realizada con exito.");
 					}
 					else {
 						// Si llegue aca, el libro estaba prestado y no tiene sentido
