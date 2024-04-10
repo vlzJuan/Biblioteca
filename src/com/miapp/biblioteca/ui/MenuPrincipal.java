@@ -28,16 +28,12 @@ public class MenuPrincipal {
 		boolean continuar = true;
 		System.out.println("\n[Menu Principal]");
 		System.out.println("Ingrese el numero de la operacion que quiere realizar:");
-		System.out.println("\t1-Solicitar prestamo de libro.");
-		System.out.println("\t2-Devolver un libro.");
-		System.out.println("\t3-Buscar un libro.");
-		System.out.println("\t4-Administrar catalogo");
-		System.out.println("\t5-Administrar usuarios");
-		//System.out.println("\t3-Ver libros que un usuario tiene.");
-		//System.out.println("\t4-Ver catalogo.");
-		//System.out.println("\t4-Administrar catalogo.");
-		//System.out.println("\t5-Administrar usuarios.");
-		System.out.println("\t0-Salir.");
+		System.out.println("1 - Solicitar prestamo de libro.");
+		System.out.println("2 - Devolver un libro.");
+		System.out.println("3 - Buscar un libro.");
+		System.out.println("4 - Administrar catalogo");
+		System.out.println("5 - Administrar usuarios");
+		System.out.println("0 - Salir.");
 		// Mientras no se ingresa una opcion valida, se sigue solicitando.
 		while(!stdIn.hasNextInt()) {
 			System.out.println("Ingrese el numero de la opcion que desea usar.");
