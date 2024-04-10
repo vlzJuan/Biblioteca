@@ -211,7 +211,7 @@ public class MenuAdministrarUsuarios {
 		
 		if(currentUser!=null) {
 			
-			System.out.println(currentUser.toString());
+			System.out.print(currentUser.toString() + ". ");
 			usuarios.mostrarLibrosPrestados(currentUser);
 	
 		}
@@ -235,7 +235,7 @@ public class MenuAdministrarUsuarios {
 					+ "en el sistema:");
 			for(Usuario user:usuarios.getListaUsuarios()) {
 				
-				System.out.println(user.toString());
+				System.out.print(user.toString() + ". ");
 				usuarios.mostrarLibrosPrestados(user);
 			}
 		}

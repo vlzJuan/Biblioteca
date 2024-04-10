@@ -110,7 +110,7 @@ public class UsuarioServicio {
 	 */
 	public void mostrarLibrosPrestados(Usuario user) {
 		
-		if(!user.getLibrosPrestados().isEmpty()) {
+		if(user.getLibrosPrestados().isEmpty()) {
 			System.out.println("El usuario " + user.getId() + " no tiene libros prestados.");
 		}
 		else {
