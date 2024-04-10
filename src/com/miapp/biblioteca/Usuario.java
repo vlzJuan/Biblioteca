@@ -51,8 +51,8 @@ public class Usuario{
 	// formato que quiero mostrarlo.
 	@Override
 	public String toString() {
-		return "Usuario:\tNombre = " + this.nombre + "\n\t\t\t"
-				+ "Id = " + this.id;
+		return "Usuario: [Nombre = " + this.nombre
+				+ " , Id = " + this.id + "]";
 
 	}
 	

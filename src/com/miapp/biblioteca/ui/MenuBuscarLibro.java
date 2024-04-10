@@ -43,7 +43,7 @@ public class MenuBuscarLibro {
 			entrada = stdIn.nextLine();
 			
 			for(Libro book:biblioteca.getInventario()) {	
-				if(book.getTitulo().equalsIgnoreCase(entrada)) {
+				if(book.getTitulo().toLowerCase().contains(entrada.toLowerCase())) {
 					coincidencias.add(book);
 				}
 			}
@@ -57,7 +57,7 @@ public class MenuBuscarLibro {
 			entrada = stdIn.nextLine();
 		
 			for(Libro book:biblioteca.getInventario()) {			
-				if(book.getAutor().equalsIgnoreCase(entrada)) {
+				if(book.getAutor().toLowerCase().contains(entrada.toLowerCase())) {
 					coincidencias.add(book);
 				}
 			}
@@ -70,7 +70,7 @@ public class MenuBuscarLibro {
 			entrada = stdIn.nextLine();
 		
 			for(Libro book:biblioteca.getInventario()) {			
-				if(book.getGenero().equalsIgnoreCase(entrada)) {
+				if(book.getGenero().toLowerCase().contains(entrada.toLowerCase())) {
 					coincidencias.add(book);
 				}
 			}

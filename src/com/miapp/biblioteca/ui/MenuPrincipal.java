@@ -59,7 +59,7 @@ public class MenuPrincipal {
 			break;
 		case 3:
 			// Aca hacer lo necesario para buscar libros.
-			MenuBuscarLibro.menuBuscar(stdIn, biblioteca);
+			while(MenuBuscarLibro.menuBuscar(stdIn, biblioteca));
 			break;
 		case 4:
 			// Aca, accedo al menu para administrar el inventario.
@@ -100,22 +100,29 @@ public class MenuPrincipal {
 		
 		
 		if(currentLibro!=null) {
-		
-			System.out.println("Ingrese el identificador de usuario.");
-			String userId = stdIn.nextLine();
-			
-			Usuario currentUser = usuarios.getUser(userId);
-			
-			// Invoco el metodo que presta libros.
-			if(biblioteca.prestarLibro(currentLibro, currentUser)) {
-				System.out.println("Libro prestado exitosamente.");
+			// Si el libro esta disponible, sigo con la operacion.
+			if(currentLibro.getDisponible()) {
+				System.out.println("Ingrese el identificador de usuario.");
+				String userId = stdIn.nextLine();
+				
+				Usuario currentUser = usuarios.getUser(userId);
+				
+				// Invoco el metodo que presta libros.
+				if(biblioteca.prestarLibro(currentLibro, currentUser)) {
+					System.out.println("Libro '" + currentLibro.getISBN() 
+					+ "' prestado exitosamente al usuario '" + currentUser.getId() + "'.");
+				}
+				else {
+					System.out.println("No se pudo prestar el libro al usuario solicitado.");
+				}	
 			}
 			else {
-				System.out.println("No se pudo prestar el libro al usuario solicitado.");
+				System.out.println("El libro existe en el inventario, pero esta prestado a "
+						+ "otro usuario.");
 			}
 		}
 		else {
-			System.out.println("El libro solicitado no esta disponible. Volviendo a menu.");
+			System.out.println("El libro solicitado no existe en el inventario.");
 		}
 	}
 	
@@ -141,7 +148,9 @@ public class MenuPrincipal {
 			Usuario currentUser = usuarios.getUser(userId);
 
 			if(biblioteca.aceptarDevolucionLibro(currentLibro, currentUser)) {
-				System.out.println("Devolucion realizada con exito.");
+				System.out.println("Devolucion del libro '" + currentLibro.getISBN()
+									+ "' realizada con exito.");
+						
 			}
 			else {
 				System.out.println("El usuario no poseia el libro a devolver.");
